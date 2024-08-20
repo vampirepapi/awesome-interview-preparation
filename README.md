@@ -55,3 +55,16 @@
    - Revise key topics, practice relaxation techniques, and review your interview strategies.
 
 ### Still WIP ..
+
+#### Uncategorized - 
+Spring Boot:
+https://lnkd.in/gz2A5ih2
+
+Low Level Design:
+https://lnkd.in/dJkgzKxf
+
+JAVA:
+https://lnkd.in/dUNA6vsU
+
+High Level Design:
+https://lnkd.in/d8eDwYVA
