@@ -31,7 +31,7 @@ body {
 .mindmap {
   display: flex;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 1rem;
   flex-wrap: wrap;
   background: rgba(0, 0, 0, 0.3);
   border-radius: 15px;
@@ -39,7 +39,7 @@ body {
   z-index: 1;
   flex-grow: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -50,6 +50,7 @@ body {
   animation: slideIn 0.8s ease forwards;
   opacity: 0;
   width: 100%;
+  max-width: 600px;
 }
 
 /* Staggered animation for child nodes */
@@ -75,13 +76,14 @@ body {
   position: relative;
   color: #2d3748;
   word-wrap: break-word;
+  font-size: 0.95rem;
 }
 
 .root > .node-content {
   background: linear-gradient(135deg, #ffdd00, #ff6f61);
   color: white;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border-left: none;
   box-shadow: 0 10px 15px rgba(255, 221, 0, 0.4);
   animation: pulse 2s infinite;
@@ -118,7 +120,7 @@ body {
 }
 
 .node.expanded > .children {
-  max-height: 5000px; /* Increased for mobile compatibility */
+  max-height: 5000px;
   opacity: 1;
 }
 
@@ -165,6 +167,103 @@ a:hover {
   transform: translateX(3px);
 }
 
+/* Spaceship, Grogu, and Space Battle Elements */
+#spaceship {
+  position: fixed;
+  width: 50px;
+  height: 30px;
+  background: url('https://img.icons8.com/?size=50&id=73c5y0mCXdPT&format=png&color=000000') no-repeat center;
+  background-size: contain;
+  z-index: 0;
+  animation: fly 20s linear infinite;
+  opacity: 1;
+}
+
+#grogu {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  background: url('https://img.icons8.com/?size=100&id=1eGeikx9BzTw&format=png&color=000000') no-repeat center;
+  background-size: contain;
+  z-index: 10;
+  animation: float 6s ease-in-out infinite;
+  cursor: pointer;
+}
+
+.fireball {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #ff4500 20%, #ff8c00 50%, transparent 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 15px 5px rgba(255, 69, 0, 0.7), 0 0 25px 10px rgba(255, 140, 0, 0.5);
+  opacity: 0;
+  z-index: 0;
+  animation: shootFireball 2s ease-out forwards, pulseFireball 0.5s infinite alternate;
+}
+
+.fireball::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255, 69, 0, 0.3), transparent);
+  transform: translateX(-50%);
+  animation: trail 2s ease-out forwards;
+}
+
+.tie-fighter {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background: url('https://img.icons8.com/ios-filled/50/ffffff/tie-fighter.png') no-repeat center;
+  background-size: contain;
+  z-index: 0;
+  animation: flyTie 15s linear infinite;
+  opacity: 0.9;
+}
+
+.laser {
+  position: fixed;
+  width: 5px;
+  height: 20px;
+  background: #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+  z-index: 0;
+  animation: shootLaser 1s linear forwards;
+}
+
+.explosion {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #ff4500, #ff8c00, transparent);
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ff4500;
+  z-index: 0;
+  animation: explode 0.5s ease-out forwards;
+}
+
+/* Music Toggle Button */
+#music-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 2;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s ease;
+}
+
+#music-toggle:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
 /* Footer Styling */
 .dynamic-footer {
   text-align: center;
@@ -177,7 +276,7 @@ a:hover {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -211,46 +310,93 @@ a:hover {
   50% { transform: scale(1.2); }
 }
 
+@keyframes fly {
+  0% { left: -50px; top: 10%; }
+  100% { left: 100%; top: 20%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes shootFireball {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(calc(var(--x-end) / 2), calc(var(--y-end) / 2)) scale(1) rotate(calc(var(--rotate-end) / 2));
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x-end), var(--y-end)) scale(1.5) rotate(var(--rotate-end));
+  }
+}
+
+@keyframes pulseFireball {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+
+@keyframes trail {
+  0% { opacity: 0.5; transform: translateX(-50%) scaleX(1); }
+  100% { opacity: 0; transform: translateX(-100%) scaleX(2); }
+}
+
+@keyframes flyTie {
+  0% { right: -40px; top: 30%; transform: rotate(0deg); }
+  100% { right: 100%; top: 40%; transform: rotate(360deg); }
+}
+
+@keyframes shootLaser {
+  0% { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(-200px); }
+}
+
+@keyframes explode {
+  0% { opacity: 1; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(2); }
+}
+
 .expanded > .children > .node > .node-content {
   animation: twinkle 2s ease-in-out infinite;
 }
 
 /* Media Queries */
+@media (min-width: 769px) {
+  .mindmap { padding: 2rem; }
+  .node-content { font-size: 1rem; }
+  .root > .node-content { font-size: 1.2rem; }
+  #spaceship { width: 70px; height: 40px; }
+  #grogu { width: 80px; height: 80px; bottom: 10%; right: 5%; }
+  .fireball { width: 30px; height: 30px; }
+  .tie-fighter { width: 50px; height: 50px; }
+  .laser { width: 6px; height: 25px; }
+  .explosion { width: 60px; height: 60px; }
+}
+
 @media (max-width: 768px) {
-  body {
-    padding: 0.5rem;
-  }
-  .mindmap {
-    padding: 0.5rem;
-  }
-  .node-content {
-    padding: 0.5rem 0.8rem;
-    font-size: 0.9rem;
-  }
-  .root > .node-content {
-    font-size: 1rem;
-  }
-  .children {
-    padding-left: 1rem;
-  }
-  .node:not(.root) > .node-content::before {
-    left: -0.8rem;
-    width: 0.8rem;
-  }
-  .dynamic-footer {
-    font-size: 0.8rem;
-    margin-top: 1rem;
-  }
+  body { padding: 0.5rem; }
+  .mindmap { padding: 0.5rem; }
+  .node-content { padding: 0.5rem 0.8rem; font-size: 0.9rem; }
+  .root > .node-content { font-size: 1rem; }
+  .children { padding-left: 1rem; }
+  .node:not(.root) > .node-content::before { left: -0.8rem; width: 0.8rem; }
+  .dynamic-footer { font-size: 0.8rem; margin-top: 1rem; }
+  #spaceship { width: 40px; height: 24px; }
+  #grogu { width: 50px; height: 50px; bottom: 5%; right: 2%; }
+  .fireball { width: 15px; height: 15px; }
+  .tie-fighter { width: 30px; height: 30px; }
+  .laser { width: 4px; height: 15px; }
+  .explosion { width: 40px; height: 40px; }
+  #music-toggle { top: 5px; right: 5px; padding: 0.3rem 0.7rem; font-size: 0.8rem; }
 }
 
 @media (max-width: 480px) {
-  .node-content {
-    font-size: 0.85rem;
-  }
-  .root > .node-content {
-    font-size: 0.95rem;
-  }
-  .children {
-    padding-left: 0.8rem;
-  }
+  .node-content { font-size: 0.85rem; }
+  .root > .node-content { font-size: 0.95rem; }
+  .children { padding-left: 0.8rem; }
 }
