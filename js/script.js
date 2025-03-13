@@ -1,13 +1,15 @@
-// Toggle node function
-function toggleNode(el) {
-  if (el.querySelector('.children')) {
-    el.classList.toggle('expanded');
-    event.stopPropagation();
+// Function to toggle the node's expanded state
+function toggleNode(event) {
+  const el = event.currentTarget; // The node that was clicked
+  if (el.querySelector('.children')) { // Check if it has child nodes
+    el.classList.toggle('expanded'); // Toggle the 'expanded' class
+    event.stopPropagation(); // Prevent the click from affecting parent nodes
   }
 }
 
+// Attach the click event listener to all .node elements
 document.querySelectorAll('.node').forEach(node => {
-  node.addEventListener('click', () => toggleNode(node));
+  node.addEventListener('click', toggleNode);
 });
 
 // Starry Night Background
