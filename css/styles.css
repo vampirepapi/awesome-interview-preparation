@@ -400,3 +400,15 @@ a:hover {
   .root > .node-content { font-size: 0.95rem; }
   .children { padding-left: 0.8rem; }
 }
+
+/* Styles for the HOT tag */
+.hot-tag {
+  background-color: #b92f46;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+  text-transform: uppercase;
+}
