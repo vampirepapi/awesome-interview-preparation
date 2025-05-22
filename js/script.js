@@ -210,3 +210,35 @@ window.addEventListener('resize', () => {
   }
   updateBackgroundElements();
 });
+
+// Dark Mode Toggle Functionality
+const darkModeToggle = document.getElementById('dark-mode-toggle');
+const body = document.body;
+
+// Function to apply dark mode based on stored preference or system setting
+function applyDarkModePreference() {
+  const darkModeState = localStorage.getItem('darkMode');
+  if (darkModeState === 'enabled') {
+    body.classList.add('dark-mode');
+    darkModeToggle.textContent = 'Light Mode';
+  } else {
+    // Default to light mode if no preference or disabled
+    body.classList.remove('dark-mode');
+    darkModeToggle.textContent = 'Dark Mode';
+  }
+}
+
+// Event listener for the dark mode toggle button
+darkModeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  if (body.classList.contains('dark-mode')) {
+    localStorage.setItem('darkMode', 'enabled');
+    darkModeToggle.textContent = 'Light Mode';
+  } else {
+    localStorage.setItem('darkMode', 'disabled');
+    darkModeToggle.textContent = 'Dark Mode';
+  }
+});
+
+// Apply dark mode preference when the script loads
+document.addEventListener('DOMContentLoaded', applyDarkModePreference);

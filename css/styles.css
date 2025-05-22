@@ -412,3 +412,134 @@ a:hover {
   margin-left: 8px;
   text-transform: uppercase;
 }
+
+/* Dark Mode Styles */
+body.dark-mode {
+  color: #e2e8f0; /* Light gray text for body */
+  background: #1a202c; /* Dark background for body */
+}
+
+body.dark-mode #starry-bg {
+  background: linear-gradient(to bottom, #0a0e1a, #1a202c, #000000); /* Darker gradient for starry background */
+}
+
+body.dark-mode .mindmap {
+  background: rgba(0, 0, 0, 0.5); /* Slightly darker mindmap background if needed, or adjust opacity */
+}
+
+body.dark-mode .node-content {
+  background-color: #2d3748; /* Dark gray for node content background */
+  color: #e2e8f0; /* Light gray text for node content */
+  border-left-color: #63b3ed; /* Light blue border, can be adjusted */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Adjusted shadow for dark bg */
+}
+
+body.dark-mode .node-content:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6); /* Adjusted hover shadow */
+  filter: brightness(1.2);
+}
+
+body.dark-mode .root > .node-content {
+  background: linear-gradient(135deg, #4a5568, #2d3748); /* Darker gradient for root node */
+  color: #f7fafc; /* White text for root node */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .node:nth-child(1) > .node-content { border-left-color: #63b3ed; } /* Light Blue */
+body.dark-mode .node:nth-child(2) > .node-content { border-left-color: #48bb78; } /* Light Green */
+body.dark-mode .node:nth-child(3) > .node-content { border-left-color: #f56565; } /* Light Red */
+body.dark-mode .node:nth-child(4) > .node-content { border-left-color: #f6ad55; } /* Light Orange */
+body.dark-mode .node:nth-child(5) > .node-content { border-left-color: #b794f4; } /* Light Purple */
+body.dark-mode .node:nth-child(6) > .node-content { border-left-color: #38b2ac; } /* Light Teal */
+body.dark-mode .node:nth-child(7) > .node-content { border-left-color: #ed8936; } /* Lighter Brown/Orange */
+body.dark-mode .node:nth-child(8) > .node-content { border-left-color: #68d391; } /* Another Light Green */
+body.dark-mode .node:nth-child(9) > .node-content { border-left-color: #fc8181; } /* Another Light Red */
+
+
+body.dark-mode a {
+  color: #63b3ed; /* Light blue for links */
+}
+
+body.dark-mode a:hover {
+  color: #f6ad55; /* Light orange for link hover */
+}
+
+body.dark-mode .hot-tag {
+  background-color: #c53030; /* Darker red for hot-tag background */
+  color: #f7fafc; /* White text for hot-tag */
+}
+
+body.dark-mode .children::before {
+  background-color: rgba(226, 232, 240, 0.5); /* Light gray for connecting lines */
+}
+
+body.dark-mode .node:not(.root) > .node-content::before {
+  background-color: rgba(226, 232, 240, 0.5); /* Light gray for connecting lines */
+}
+
+body.dark-mode .dynamic-footer {
+  color: #e2e8f0; /* Light gray text for footer */
+  background: rgba(0, 0, 0, 0.7); /* Slightly darker footer background */
+}
+
+body.dark-mode .heart {
+  color: #f56565; /* Lighter red for heart */
+}
+
+body.dark-mode #music-toggle {
+  background: rgba(45, 55, 72, 0.5); /* Darker background for music toggle */
+  color: #e2e8f0; /* Light text for music toggle */
+}
+
+body.dark-mode #music-toggle:hover {
+  background: rgba(45, 55, 72, 0.8);
+}
+
+/* Add styles for the new dark mode toggle button */
+#dark-mode-toggle {
+  position: fixed;
+  top: 10px;
+  right: 150px; /* Adjust position to not overlap music toggle */
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 2;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+body.dark-mode #dark-mode-toggle {
+  background: rgba(45, 55, 72, 0.5); /* Darker background for dark mode toggle */
+  color: #e2e8f0; /* Light text for dark mode toggle */
+}
+
+body.dark-mode #dark-mode-toggle:hover {
+  background: rgba(45, 55, 72, 0.8);
+}
+
+/* Adjust button positions for smaller screens */
+@media (max-width: 768px) {
+  #music-toggle {
+    top: 5px;
+    right: 5px;
+  }
+  #dark-mode-toggle {
+    top: 5px;
+    right: 120px; /* Adjust for smaller screens */
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #dark-mode-toggle {
+    right: 100px; /* Further adjust for very small screens */
+  }
+}
