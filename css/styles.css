@@ -190,16 +190,26 @@ a:hover {
   cursor: pointer;
 }
 
+/* Added style for Grogu's click animation */
+#grogu.grogu-animating-click {
+  /* scale combines with translateY from float animation */
+  transform: scale(1.1); 
+  transition: transform 0.1s ease-out;
+}
+
 .fireball {
-  position: absolute;
+  /* position: fixed is set here to ensure viewport-relative positioning */
+  position: fixed; 
   width: 20px;
   height: 20px;
   background: radial-gradient(circle, #ff4500 20%, #ff8c00 50%, transparent 70%);
   border-radius: 50%;
   box-shadow: 0 0 15px 5px rgba(255, 69, 0, 0.7), 0 0 25px 10px rgba(255, 140, 0, 0.5);
   opacity: 0;
-  z-index: 0;
+  /* Ensure fireball is above Grogu (z-index: 10) and other elements if needed */
+  z-index: 11; 
   animation: shootFireball 2s ease-out forwards, pulseFireball 0.5s infinite alternate;
+  /* transform: translate(-50%, -50%) is set by JS to center the element on its left/top coords */
 }
 
 .fireball::after {
@@ -367,6 +377,33 @@ a:hover {
 
 /* Media Queries */
 @media (min-width: 769px) {
+  /* Make the main category container flex for horizontal layout */
+  .root > .children {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the category nodes */
+    padding-left: 0; /* Remove default padding, as it's for vertical list */
+  }
+
+  /* Adjust category nodes for flex layout */
+  .root > .children > .node {
+    width: auto; /* Let content and flex properties determine size */
+    max-width: 270px; /* Allow 2 nodes side-by-side within root's 600px max-width */
+    /* margin: 0.5rem; is already there and should work for spacing */
+  }
+
+  /* Hide the vertical connecting line for the root's children container,
+     as children are now horizontal. */
+  .root > .children::before {
+    display: none;
+  }
+
+  /* Hide the horizontal connecting line for category nodes if they are direct children of root's children,
+     as their parent is now a flex container and the line might not align well. */
+  .root > .children > .node > .node-content::before {
+    display: none;
+  }
+
   .mindmap { padding: 2rem; }
   .node-content { font-size: 1rem; }
   .root > .node-content { font-size: 1.2rem; }
@@ -540,6 +577,6 @@ body.dark-mode #dark-mode-toggle:hover {
 
 @media (max-width: 480px) {
   #dark-mode-toggle {
-    right: 100px; /* Further adjust for very small screens */
+    right: 115px; /* Further adjust for very small screens to prevent overlap with music toggle */
   }
 }
