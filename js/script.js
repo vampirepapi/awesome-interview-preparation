@@ -88,31 +88,43 @@ spaceship.addEventListener('animationiteration', () => {
 function createFireball(isClick = false) {
   const fireball = document.createElement('div');
   fireball.classList.add('fireball');
-  grogu.appendChild(fireball);
+
+  // Get Grogu's current position to make fireball launch from there
+  const groguRect = grogu.getBoundingClientRect();
+  // Calculate center of Grogu as the spawn point for the fireball's center
+  const initialX = groguRect.left + (groguRect.width / 2);
+  const initialY = groguRect.top + (groguRect.height * 0.2); // Approx 20% from Grogu's top
+
+  // Note: .fireball CSS class should set position:fixed and appropriate z-index.
+  // JS sets initial coordinates and transform to center the fireball.
+  fireball.style.left = `${initialX}px`;
+  fireball.style.top = `${initialY}px`;
+  fireball.style.transform = 'translate(-50%, -50%)'; 
+
+  document.body.appendChild(fireball); // Append to body for stable positioning context
 
   const angle = (Math.random() - 0.5) * 30;
-  const xOffset = -100 + (Math.random() - 0.5) * 40;
+  // xOffset and yOffset define the travel distance and direction from its starting point
+  const xOffset = -100 + (Math.random() - 0.5) * 40; 
   const yOffset = -60 + (Math.random() - 0.5) * 20;
-
-  fireball.style.left = '50%';
-  fireball.style.top = '20%';
-  fireball.style.transform = 'translateX(-50%)';
 
   fireball.style.setProperty('--x-end', `${xOffset}px`);
   fireball.style.setProperty('--y-end', `${yOffset}px`);
   fireball.style.setProperty('--rotate-end', `${360 + angle}deg`);
 
   if (isClick) {
-    grogu.style.transition = 'transform 0.1s';
-    grogu.style.transform = 'scale(1.1)';
+    // Apply click animation using a class to avoid direct style manipulation conflicts
+    grogu.classList.add('grogu-animating-click');
     setTimeout(() => {
-      grogu.style.transform = 'translateY(0)';
-    }, 100);
+      grogu.classList.remove('grogu-animating-click');
+    }, 150); // Duration of click animation
   }
 
   fireball.addEventListener('animationend', (e) => {
-    if (e.animationName === 'shootFireball' && fireball.parentNode) {
-      grogu.removeChild(fireball);
+    // Ensure we only remove it after the main 'shootFireball' animation
+    // and check if it's still a child of document.body
+    if (e.animationName === 'shootFireball' && fireball.parentNode === document.body) {
+      document.body.removeChild(fireball);
     }
   });
 }
