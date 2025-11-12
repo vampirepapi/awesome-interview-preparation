@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
@@ -16,6 +20,7 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #starry-bg {
@@ -71,12 +76,13 @@ body {
   display: block;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border-left: 4px solid #4a6fa5;
   position: relative;
   color: #2d3748;
   word-wrap: break-word;
   font-size: 0.95rem;
+  user-select: none;
 }
 
 .root > .node-content {
@@ -88,12 +94,17 @@ body {
   box-shadow: 0 10px 15px rgba(255, 221, 0, 0.4);
   animation: pulse 2s infinite;
   text-align: center;
+  cursor: pointer;
 }
 
 .node-content:hover {
   transform: scale(1.03) translateY(-3px);
   box-shadow: 0 8px 15px rgba(255, 255, 255, 0.5);
   filter: brightness(1.1);
+}
+
+.node-content:active {
+  transform: scale(0.98) translateY(-1px);
 }
 
 .children {
@@ -160,11 +171,33 @@ a {
   text-decoration: none;
   transition: all 0.2s ease;
   word-wrap: break-word;
+  position: relative;
+  display: inline-block;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, #ffdd00, #ff6f61);
+  transition: width 0.3s ease;
 }
 
 a:hover {
   color: #ffdd00;
-  transform: translateX(3px);
+}
+
+a:hover::after {
+  width: 100%;
+}
+
+a:focus {
+  outline: 2px solid #ffdd00;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* Spaceship, Grogu, and Space Battle Elements */
@@ -262,16 +295,25 @@ a:hover {
   padding: 0.5rem 1rem;
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  border: none;
-  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
   cursor: pointer;
   z-index: 2;
   font-family: 'Poppins', sans-serif;
-  transition: background 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 #music-toggle:hover {
   background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+#music-toggle:active {
+  transform: translateY(0);
 }
 
 /* Footer Styling */
@@ -536,29 +578,40 @@ body.dark-mode #music-toggle:hover {
 #dark-mode-toggle {
   position: fixed;
   top: 10px;
-  right: 150px; /* Adjust position to not overlap music toggle */
+  right: 150px;
   padding: 0.5rem 1rem;
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  border: none;
-  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
   cursor: pointer;
   z-index: 2;
   font-family: 'Poppins', sans-serif;
-  transition: background 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 #dark-mode-toggle:hover {
   background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+#dark-mode-toggle:active {
+  transform: translateY(0);
 }
 
 body.dark-mode #dark-mode-toggle {
-  background: rgba(45, 55, 72, 0.5); /* Darker background for dark mode toggle */
-  color: #e2e8f0; /* Light text for dark mode toggle */
+  background: rgba(45, 55, 72, 0.5);
+  color: #e2e8f0;
+  border-color: rgba(226, 232, 240, 0.3);
 }
 
 body.dark-mode #dark-mode-toggle:hover {
   background: rgba(45, 55, 72, 0.8);
+  box-shadow: 0 4px 12px rgba(100, 100, 255, 0.2);
 }
 
 /* Adjust button positions for smaller screens */
