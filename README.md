@@ -48,10 +48,14 @@
 ### **6. Additional Resources**
    - [GitHub - Awesome Interview Questions](https://github.com/DopplerHQ/awesome-interview-questions)
 
-### **7. Mock Interviews**
+### **7. 🔥 ShitCode Problem Lists**
+   - Launch the in-app `🔥 ShitCode` button (top-right) to open the dedicated tracker.
+   - Direct link: [ShitCode Tracker](./shitcode.html)
+
+### **8. Mock Interviews**
    - Schedule and conduct mock interviews to refine your skills and receive constructive feedback.
 
-### **8. Final Review**
+### **9. Final Review**
    - Revise key topics, practice relaxation techniques, and review your interview strategies.
 
 ### Still WIP ..

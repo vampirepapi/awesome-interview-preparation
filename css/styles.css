@@ -614,6 +614,46 @@ body.dark-mode #dark-mode-toggle:hover {
   box-shadow: 0 4px 12px rgba(100, 100, 255, 0.2);
 }
 
+/* ShitCode Button Styles */
+#shitcode-button {
+  position: fixed;
+  top: 10px;
+  right: 290px;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 2;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+#shitcode-button:hover {
+  background: rgba(255, 111, 97, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 111, 97, 0.4);
+}
+
+#shitcode-button:active {
+  transform: translateY(0);
+}
+
+body.dark-mode #shitcode-button {
+  background: rgba(45, 55, 72, 0.5);
+  color: #e2e8f0;
+  border-color: rgba(226, 232, 240, 0.3);
+}
+
+body.dark-mode #shitcode-button:hover {
+  background: rgba(255, 69, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(255, 69, 0, 0.4);
+}
+
 /* Adjust button positions for smaller screens */
 @media (max-width: 768px) {
   #music-toggle {
@@ -626,10 +666,19 @@ body.dark-mode #dark-mode-toggle:hover {
     padding: 0.3rem 0.7rem;
     font-size: 0.8rem;
   }
+  #shitcode-button {
+    top: 5px;
+    right: 230px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
   #dark-mode-toggle {
     right: 115px; /* Further adjust for very small screens to prevent overlap with music toggle */
+  }
+  #shitcode-button {
+    right: 215px;
   }
 }
