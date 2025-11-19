@@ -138,6 +138,11 @@ This document outlines the major improvements made to make the code more modern,
 3. **Better Audio Controls**: Visual feedback for play/pause state
 4. **Elegant Notifications**: No more jarring alerts
 5. **Improved UX**: Smoother interactions throughout
+6. **🔥 ShitCode Button**: New dedicated button with hot/fire icon that opens the ShitCode LeetCode problem tracker page
+   - Modern glassmorphism design matching existing buttons
+   - Opens in new tab for seamless navigation
+   - Track progress on Blind 75, NeetCode 150, and more
+   - Includes difficulty badges, video links, and confetti celebrations
 
 ## 📊 Code Metrics
 

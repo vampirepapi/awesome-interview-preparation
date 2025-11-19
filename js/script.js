@@ -424,6 +424,22 @@ class DarkModeController {
   }
 }
 
+class ShitcodeButtonController {
+  constructor() {
+    this.button = document.getElementById('shitcode-button');
+    if (!this.button) return;
+    this.init();
+  }
+
+  init() {
+    this.button.addEventListener('click', () => this.openShitcode());
+  }
+
+  openShitcode() {
+    window.open('shitcode.html', '_blank');
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   new StarryBackground('starry-bg');
   new MindMap();
@@ -432,4 +448,5 @@ document.addEventListener('DOMContentLoaded', () => {
   new SpaceBattle();
   new AudioController();
   new DarkModeController();
+  new ShitcodeButtonController();
 });
