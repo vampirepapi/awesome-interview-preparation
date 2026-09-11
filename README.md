@@ -46,6 +46,7 @@
    - Prepare both detailed and short versions of answers
 
 ### **6. Additional Resources**
+- [InterviewLegend](https://interviewlegend.com) - company-specific interview prep across coding, system design, and behavioral rounds
    - [GitHub - Awesome Interview Questions](https://github.com/DopplerHQ/awesome-interview-questions)
 
 ### **7. 🔥 ShitCode Problem Lists**
